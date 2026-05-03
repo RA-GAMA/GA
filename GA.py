@@ -53,12 +53,18 @@ survivals:dict = {
     'ssr':3, #steady-state replacement only few offsrping replace worst parents
     'elitism':4 #best parents remain, offspring fills
     }
+
+conversions:dict = {
+    'none':0, #returns as string
+    'int':1, #converts data to integer
+    'float':2, #converts read data to float type
+    }
 #--------------------------------------------------------------------------
 
 # ========================== GENERAL CONTROL ================================ #
-maindir:str = 'D:/UG/soft_comp/GA/' #main directory
-csvdir:str = maindir+'cities.csv'   #csv location
-configdir:str = maindir+'config.csv' #configuration file
+
+csvdir:str = 'cities.csv'           #csv location
+
 ppl:list = []                       # actual population
 head:list = []                      # headers
 useReturn:bool = True               # include returning trace
@@ -72,44 +78,6 @@ kParents = 2                        # No. of parents to reamin when +
 #------------------------------------------------------------------------------
 
 # ========================== FUNCTIONS ====================================== #
-#get configuration
-def getConfig(configFile:str, defIndex:int=0, valIndex:int=1):
-    ''' reads the configuration file and stablishes configuration from it\n
-    - "configFile" = configuration file location\n
-    - "defIndex" = definition index (in row)
-    - "valIndex" = value index (in row)
-    '''
-    if not exists(configFile):
-        r = input("Configuration file not found.\n - Create one with default settings?\n - 'y' or 'n':")
-        if 'y' in r:
-            with open(configdir,'w') as f:
-                f.write("population,10\n")
-                f.write("iterations,50\n")
-                f.write("CR,0.3\n")
-                f.write("MR,0.3")
-        else:
-            raise FileExistsError(f"{configFile} not found")
-    print('Reading configurations from file:')            
-    with open(configFile) as f:
-        reader = csv.reader(f)
-        for row in reader:
-            #check definition and value
-            _def = row[defIndex].lower()
-            _val = row[valIndex].lower()
-            if _def=='population':
-                samples = int(_val)
-                print(f' - population size set to {_val}')
-            elif _def=='cr':
-                crate = float(_val)
-                print(f' - crossover rate set to {_val}')
-            elif _def=='mr':
-                mrate = float(_val)
-                print(f' - mutation rate set to {_val}')
-            elif _def=='iterations':
-                print(f' - iterations set to {_val}')
-                iters = int(_val)
-            else:
-                raise ValueError(f"invalid configuration's definition: {_def}")
                 
 #read csv and returns population (heads stored in __head)
 def read(datafile:str,_convert:int=0,nline='',
@@ -518,8 +486,6 @@ def bests(ppl:list,quantity:int):
 
 # ========================== PROGRAM ======================================== #
 
-#read configuration file
-getConfig(configdir)
 # read the route from csv file
 route = read(csvdir,conversions['int'])
 #perform evolution
