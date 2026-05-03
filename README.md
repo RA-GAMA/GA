@@ -34,3 +34,9 @@ The code considers applications on Selection | Crossover | Mutation | Survival m
 To ensure randomness, the code considers a selection of each possible method for each process (Parent Selection, Crossover, Mutation, and Survival) in every iteration.
 
 Additionally, mutation and crossover rates are applied.
+
+# Sample
+To use the code simply:
+1. Read the CSV file or create a list of dots.
+2. Create a population to use as a reference.
+3. Command to evolve.
