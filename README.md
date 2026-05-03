@@ -1,8 +1,8 @@
-# Genetic Algorith
+# Genetic Algorithm
 
 This code shows a basic-level genetic algorithm applied to the salesman trip problem, using a few coordinates and considering direct routes only.
 
-This code is intended to learn how GA is applied on permutation cases like this one.
+This code is intended to learn how GA is applied to permutation cases like this one.
 
 The code considers applications on Selection | Crossover | Mutation | Survival methods:
 
