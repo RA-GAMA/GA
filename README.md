@@ -6,7 +6,7 @@ This code is intended to learn how GA is applied on permutation cases like this 
 
 The code considers applications on Selection | Crossover | Mutation | Survival methods:
 
-# Selection:
+# Parent Selection:
 - Roulette Wheel.
 - Tournament.
 - Rank.
@@ -27,5 +27,10 @@ The code considers applications on Selection | Crossover | Mutation | Survival m
 - Generational
 - μ, λ
 - μ + λ
-- Steady State Replacemente (SSR)
+- Steady State Replacement (SSR)
 - Elitism
+
+#RANDOMNESS
+To ensure randomness, the code considers a selection of each possible method for each process (Parent Selection, Crossover, Mutation, and Survival) in every iteration.
+
+Additionally, mutation and crossover rates are applied.
