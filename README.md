@@ -30,7 +30,7 @@ The code considers applications on Selection | Crossover | Mutation | Survival m
 - Steady State Replacement (SSR)
 - Elitism
 
-#RANDOMNESS
+# RANDOMNESS:
 To ensure randomness, the code considers a selection of each possible method for each process (Parent Selection, Crossover, Mutation, and Survival) in every iteration.
 
 Additionally, mutation and crossover rates are applied.
